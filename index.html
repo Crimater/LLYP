@@ -6,22 +6,23 @@
     <title>优质套餐选择</title>
     <style>
         :root {
-            --primary-color: #5E72E4;  /* 柔和的专业蓝 */
-            --primary-light: #8293FF; /* 更明亮的蓝色变体 */
-            --secondary-color: #825EE4; /* 紫色调和 */
-            --accent-color: #11CDEF;  /* 清新的青蓝色 */
-            --success-color: #2DCE89;  /* 成功的绿色 */
-            --warning-color: #FB6340;  /* 警告的橙色 */
-            --text-dark: #32325D;     /* 深色文本 */
-            --text-normal: #525F7F;    /* 普通文本 */
-            --text-light: #8898AA;     /* 浅色文本 */
-            --light-gray: #F8F9FE;     /* 非常浅的背景 */
-            --white: #FFFFFF;
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.1);
-            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            --border-radius: 12px;
+            --primary-color: #4361ee;  /* 深邃科技蓝 */
+            --primary-light: #5a7bf0;  /* 明亮科技蓝 */
+            --secondary-color: #3a0ca3; /* 深紫色 */
+            --accent-color: #4cc9f0;   /* 清新青蓝 */
+            --success-color: #38b000;  /* 自然绿 */
+            --warning-color: #ff5a5f;  /* 活力橙红 */
+            --text-dark: #14213d;      /* 深海军蓝 */
+            --text-normal: #2b2d42;    /* 深灰蓝 */
+            --text-light: #8d99ae;     /* 浅灰蓝 */
+            --light-gray: #f8f9fa;     /* 极浅灰 */
+            --card-bg: #ffffff;        /* 纯白卡片 */
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 14px;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
         }
         
         * {
@@ -31,7 +32,7 @@
         }
         
         body {
-            font-family: 'PingFang SC', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--light-gray);
             color: var(--text-normal);
             line-height: 1.6;
@@ -51,11 +52,16 @@
         }
         
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             font-weight: 700;
             color: var(--text-dark);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             letter-spacing: -0.5px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
         }
         
         .header p {
@@ -71,12 +77,12 @@
         }
         
         .section-title {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 2rem;
+            margin-bottom: 2.2rem;
             position: relative;
-            padding-bottom: 0.75rem;
+            padding-bottom: 0.8rem;
             text-align: center;
             letter-spacing: -0.25px;
         }
@@ -87,27 +93,27 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 120px;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            background: var(--gradient);
             border-radius: 2px;
-            opacity: 0.8;
+            opacity: 0.9;
         }
         
         .packages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.2rem;
         }
         
         .package-card {
-            background: var(--white);
+            background: var(--card-bg);
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
             text-align: center;
-            padding: 2.5rem 2rem;
+            padding: 2.8rem 2.2rem;
             border: 1px solid rgba(0, 0, 0, 0.03);
             position: relative;
         }
@@ -118,16 +124,16 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: var(--primary-color);
             opacity: 0;
             transition: var(--transition);
         }
         
         .package-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
-            border-color: rgba(94, 114, 228, 0.15);
+            border-color: rgba(67, 97, 238, 0.15);
         }
         
         .package-card:hover::before {
@@ -135,7 +141,7 @@
         }
         
         .package-card.free {
-            border-top: 4px solid var(--accent-color);
+            border-top: 5px solid var(--accent-color);
         }
         
         .package-card.free:hover::before {
@@ -143,15 +149,15 @@
         }
         
         .package-card.paid {
-            border-top: 4px solid var(--secondary-color);
+            border-top: 5px solid var(--primary-color);
         }
         
         .package-card.paid:hover::before {
-            background: var(--secondary-color);
+            background: var(--primary-color);
         }
         
         .package-card.not-recommended {
-            border-top: 4px solid var(--warning-color);
+            border-top: 5px solid var(--warning-color);
         }
         
         .package-card.not-recommended:hover::before {
@@ -159,27 +165,27 @@
         }
         
         .package-name {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             color: var(--text-dark);
             letter-spacing: -0.25px;
         }
         
         .package-desc {
             color: var(--text-light);
-            margin-bottom: 2rem;
-            font-size: 1rem;
+            margin-bottom: 2.2rem;
+            font-size: 1.05rem;
             line-height: 1.7;
-            padding: 0 0.5rem;
+            padding: 0 0.8rem;
         }
         
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.9rem 2.2rem;
-            background-color: var(--primary-color);
+            padding: 1rem 2.4rem;
+            background: var(--gradient);
             color: white;
             border-radius: 50px;
             text-decoration: none;
@@ -187,15 +193,32 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            font-size: 1rem;
-            letter-spacing: 0.25px;
-            box-shadow: 0 4px 6px rgba(94, 114, 228, 0.11);
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0));
+            opacity: 0;
+            transition: var(--transition);
         }
         
         .btn:hover {
-            background-color: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 7px 14px rgba(94, 114, 228, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn:hover::after {
+            opacity: 1;
         }
         
         .btn:active {
@@ -203,57 +226,55 @@
         }
         
         .btn-outline {
-            background-color: transparent;
+            background: transparent;
             border: 2px solid var(--accent-color);
             color: var(--accent-color);
             box-shadow: none;
         }
         
         .btn-outline:hover {
-            background-color: var(--accent-color);
+            background: var(--accent-color);
             color: white;
             border-color: var(--accent-color);
-            box-shadow: 0 4px 6px rgba(17, 205, 239, 0.11);
+            box-shadow: 0 6px 16px rgba(76, 201, 240, 0.2);
         }
         
         .tag {
             display: inline-block;
-            padding: 0.4rem 1rem;
-            background-color: #e9ecef;
+            padding: 0.5rem 1.2rem;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 1.25rem;
-            color: var(--text-normal);
+            margin-bottom: 1.5rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
         
         .tag.free {
-            background-color: rgba(17, 205, 239, 0.1);
+            background-color: rgba(76, 201, 240, 0.12);
             color: var(--accent-color);
         }
         
         .tag.paid {
-            background-color: rgba(130, 94, 228, 0.1);
-            color: var(--secondary-color);
+            background-color: rgba(67, 97, 238, 0.12);
+            color: var(--primary-color);
         }
         
         .tag.not-recommended {
-            background-color: rgba(251, 99, 64, 0.1);
+            background-color: rgba(255, 90, 95, 0.12);
             color: var(--warning-color);
         }
         
         .divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
-            margin: 2.5rem 0;
+            margin: 3rem 0;
         }
         
         .footer {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
+            margin-top: 4rem;
+            padding-top: 2.5rem;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
         
@@ -261,17 +282,14 @@
             color: var(--text-light);
             font-size: 0.95rem;
             line-height: 1.8;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
         
         .runtime {
             color: var(--text-light);
             font-size: 0.85rem;
-            margin-top: 1rem;
-        }
-        
-        .info-text br {
-            display: none;
+            margin-top: 1.5rem;
+            opacity: 0.8;
         }
         
         @media (max-width: 768px) {
@@ -289,15 +307,11 @@
             
             .packages-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1.8rem;
             }
             
             .package-card {
-                padding: 2rem 1.5rem;
-            }
-            
-            .info-text br {
-                display: block;
+                padding: 2.2rem 1.8rem;
             }
         }
     </style>
@@ -369,7 +383,6 @@
     <script>
         // 本站运行时间计算
         function showRuntime() {
-            // 设置网站上线时间 (年,月-1,日,时,分,秒)
             const startTime = new Date(2024, 5, 1, 0, 0, 0); // 2024年6月1日
             const now = new Date();
             const diff = now - startTime;
@@ -382,7 +395,6 @@
             document.getElementById('runtime').innerHTML = `本站已稳定运行 ${days}天${hours}小时${minutes}分${seconds}秒`;
         }
         
-        // 每秒更新一次
         showRuntime();
         setInterval(showRuntime, 1000);
     </script>
