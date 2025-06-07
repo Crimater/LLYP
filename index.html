@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优质套餐选择</title>
+    <style>
+        :root {
+            --primary-color: #5E72E4;  /* 柔和的专业蓝 */
+            --primary-light: #8293FF; /* 更明亮的蓝色变体 */
+            --secondary-color: #825EE4; /* 紫色调和 */
+            --accent-color: #11CDEF;  /* 清新的青蓝色 */
+            --success-color: #2DCE89;  /* 成功的绿色 */
+            --warning-color: #FB6340;  /* 警告的橙色 */
+            --text-dark: #32325D;     /* 深色文本 */
+            --text-normal: #525F7F;    /* 普通文本 */
+            --text-light: #8898AA;     /* 浅色文本 */
+            --light-gray: #F8F9FE;     /* 非常浅的背景 */
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-normal);
+            line-height: 1.6;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .header p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+            text-align: center;
+            letter-spacing: -0.25px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .package-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+        
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-color);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(94, 114, 228, 0.15);
+        }
+        
+        .package-card:hover::before {
+            opacity: 1;
+        }
+        
+        .package-card.free {
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .package-card.free:hover::before {
+            background: var(--accent-color);
+        }
+        
+        .package-card.paid {
+            border-top: 4px solid var(--secondary-color);
+        }
+        
+        .package-card.paid:hover::before {
+            background: var(--secondary-color);
+        }
+        
+        .package-card.not-recommended {
+            border-top: 4px solid var(--warning-color);
+        }
+        
+        .package-card.not-recommended:hover::before {
+            background: var(--warning-color);
+        }
+        
+        .package-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            letter-spacing: -0.25px;
+        }
+        
+        .package-desc {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            padding: 0 0.5rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.9rem 2.2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 0.25px;
+            box-shadow: 0 4px 6px rgba(94, 114, 228, 0.11);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(94, 114, 228, 0.2);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 6px rgba(17, 205, 239, 0.11);
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background-color: #e9ecef;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: var(--text-normal);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .tag.free {
+            background-color: rgba(17, 205, 239, 0.1);
+            color: var(--accent-color);
+        }
+        
+        .tag.paid {
+            background-color: rgba(130, 94, 228, 0.1);
+            color: var(--secondary-color);
+        }
+        
+        .tag.not-recommended {
+            background-color: rgba(251, 99, 64, 0.1);
+            color: var(--warning-color);
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+            margin: 2.5rem 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .info-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        .info-text br {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.25rem;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header p {
+                font-size: 1.05rem;
+            }
+            
+            .packages-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .package-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .info-text br {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>精选通信套餐</h1>
+            <p>我们精心挑选了最适合不同需求的优质套餐，为您提供最佳的通信体验</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">免费办理套餐</h2>
+            <div class="packages-grid">
+                <div class="package-card free">
+                    <span class="tag free">免费</span>
+                    <h3 class="package-name">全国套餐</h3>
+                    <p class="package-desc">一站式浏览我们提供的全国优质通信套餐选择</p>
+                    <a href="https://h5.gantanhao.com/?timestamp=1745736147394&from=3%40C%40%40r%3Eppq%40CA%3Bt%3FBG%3BBDqC%3BF%40%40%3E%3Bp%3Fq%3FEBo%3EpAEC3%40C%40%40" class="btn btn-outline">浏览套餐</a>
+                </div>
+                
+                <div class="package-card free">
+                    <span class="tag free">免费</span>
+                    <h3 class="package-name">长期套餐</h3>
+                    <p class="package-desc">稳定持久的通信解决方案，适合长期使用</p>
+                    <a href="https://h5.gantanhao.com/url?value=77qd21748485991697" class="btn btn-outline">立即办理</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="section">
+            <h2 class="section-title">付费优质套餐</h2>
+            <div class="packages-grid">
+                <div class="package-card paid">
+                    <span class="tag paid">热门</span>
+                    <h3 class="package-name">校园政企卡</h3>
+                    <p class="package-desc">专为学生和企业设计的优惠套餐，性价比极高</p>
+                    <a href="https://91haoka.cn/webapp/weixiaodian/index.html?shop_id=596395" class="btn">立即购买</a>
+                </div>
+                
+                <div class="package-card not-recommended">
+                    <span class="tag not-recommended">不推荐</span>
+                    <h3 class="package-name">物联卡</h3>
+                    <p class="package-desc">物联网设备专用卡，稳定性较低但价格实惠</p>
+                    <a href="https://ggtx.10086com.cc/hk/index?st=1&mid=3949&sc=726734451ef3" class="btn">了解详情</a>
+                </div>
+                
+                <div class="package-card paid">
+                    <span class="tag paid">新品</span>
+                    <h3 class="package-name">飞利猫随身WIFI</h3>
+                    <p class="package-desc">随时随地享受高速网络，便携易用</p>
+                    <a href="https://h5.feilimao.cn/#/index/d27e525c4f4f8194/1" class="btn">立即购买</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="info-text">
+                点击按钮选择您需要的套餐<br>
+                所有套餐均经过严格测试<br>
+                如有问题请联系客服
+            </div>
+        </div>
+    </div>
+</body>
+</html>
