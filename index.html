@@ -381,9 +381,11 @@
     </div>
 
     <script>
-        // 本站运行时间计算
+        // 本站运行时间计算 - 修改为2022年6月8日
         function showRuntime() {
-            const startTime = new Date(2024, 5, 1, 0, 0, 0); // 2024年6月1日
+            // 修改这里：将起始日期改为2022年6月8日
+            // JavaScript月份从0开始（0=1月，5=6月）
+            const startTime = new Date(2022, 5, 8, 0, 0, 0);
             const now = new Date();
             const diff = now - startTime;
             
