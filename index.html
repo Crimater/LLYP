@@ -11,7 +11,6 @@
             --secondary-color: #3a0ca3; /* 深紫色 */
             --accent-color: #4cc9f0;   /* 清新青蓝 */
             --success-color: #38b000;  /* 自然绿 */
-            --success-light: #4fd14f;  /* 明亮绿 */
             --warning-color: #ff5a5f;  /* 活力橙红 */
             --text-dark: #14213d;      /* 深海军蓝 */
             --text-normal: #2b2d42;    /* 深灰蓝 */
@@ -24,7 +23,6 @@
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             --border-radius: 14px;
             --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            --blog-gradient: linear-gradient(135deg, var(--success-color), var(--success-light));
         }
         
         * {
@@ -40,36 +38,6 @@
             line-height: 1.6;
             padding: 0;
             -webkit-font-smoothing: antialiased;
-            position: relative;
-        }
-        
-        /* 美化后的博客按钮样式（无图标） */
-        .exit-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 0.6rem 1.2rem;
-            background: var(--blog-gradient);
-            color: white;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            z-index: 1000;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 8px rgba(56, 176, 0, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-        
-        .exit-btn:hover {
-            background: linear-gradient(135deg, #2fa000, #3fc03f);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(56, 176, 0, 0.4);
-        }
-        
-        .exit-btn:active {
-            transform: translateY(0);
         }
         
         .container {
@@ -345,21 +313,10 @@
             .package-card {
                 padding: 2.2rem 1.8rem;
             }
-            
-            /* 移动端调整博客按钮 */
-            .exit-btn {
-                top: 10px;
-                right: 10px;
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- 美化后的博客按钮（无图标） -->
-    <a href="http://llyp.mc.hi.cn//" class="exit-btn">博客</a>
-    
     <div class="container">
         <div class="header">
             <h1>精选优质套餐</h1>
