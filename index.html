@@ -38,6 +38,32 @@
             line-height: 1.6;
             padding: 0;
             -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+        
+        /* 新增的退出按钮样式 */
+        .exit-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--warning-color);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            z-index: 1000;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(255, 90, 95, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .exit-btn:hover {
+            background-color: #ff3b40;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 90, 95, 0.4);
         }
         
         .container {
@@ -313,10 +339,21 @@
             .package-card {
                 padding: 2.2rem 1.8rem;
             }
+            
+            /* 移动端调整退出按钮位置 */
+            .exit-btn {
+                top: 10px;
+                right: 10px;
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 新增的退出按钮 -->
+    <a href="http://llyp.bswd32.xyz/" class="exit-btn">博客</a>
+    
     <div class="container">
         <div class="header">
             <h1>精选优质套餐</h1>
